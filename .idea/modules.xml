@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/ARhongb.iml" filepath="$PROJECT_DIR$/ARhongb.iml" />
       <module fileurl="file://$PROJECT_DIR$/ARhongbao.iml" filepath="$PROJECT_DIR$/ARhongbao.iml" />
       <module fileurl="file://$PROJECT_DIR$/ViewPagerIndicato/ViewPagerIndicato.iml" filepath="$PROJECT_DIR$/ViewPagerIndicato/ViewPagerIndicato.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ViewPagerIndicato/ViewPagerIndicato.iml" filepath="$PROJECT_DIR$/ViewPagerIndicato/ViewPagerIndicato.iml" />
       <module fileurl="file://$PROJECT_DIR$/ViewPagerIndicator/ViewPagerIndicator.iml" filepath="$PROJECT_DIR$/ViewPagerIndicator/ViewPagerIndicator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ViewPagerIndicator/ViewPagerIndicator.iml" filepath="$PROJECT_DIR$/ViewPagerIndicator/ViewPagerIndicator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

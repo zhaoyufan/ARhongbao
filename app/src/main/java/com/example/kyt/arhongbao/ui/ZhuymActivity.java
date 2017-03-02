@@ -33,6 +33,7 @@ public class ZhuymActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent =new Intent(ZhuymActivity.this,CanghbActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
         shb.setOnClickListener(new View.OnClickListener() {

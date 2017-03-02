@@ -8,6 +8,18 @@
         "source": "F:\\works\\ARhongbao\\ViewPagerIndicator\\res\\drawable-mdpi\\vpi__tab_selected_holo.9.png"
     },
     {
+        "merged": "F:\\Project\\ARhongb\\ViewPagerIndicator\\build\\intermediates\\res\\merged\\release\\drawable-mdpi-v4\\vpi__tab_unselected_holo.9.png",
+        "source": "F:\\Project\\ARhongb\\ViewPagerIndicator\\res\\drawable-mdpi\\vpi__tab_unselected_holo.9.png"
+    },
+    {
+        "merged": "F:\\Project\\ARhongb\\ViewPagerIndicator\\build\\intermediates\\res\\merged\\release\\drawable-mdpi-v4\\vpi__tab_selected_focused_holo.9.png",
+        "source": "F:\\Project\\ARhongb\\ViewPagerIndicator\\res\\drawable-mdpi\\vpi__tab_selected_focused_holo.9.png"
+    },
+    {
+        "merged": "F:\\Project\\ARhongb\\ViewPagerIndicator\\build\\intermediates\\res\\merged\\release\\drawable-mdpi-v4\\vpi__tab_unselected_focused_holo.9.png",
+        "source": "F:\\Project\\ARhongb\\ViewPagerIndicator\\res\\drawable-mdpi\\vpi__tab_unselected_focused_holo.9.png"
+    },
+    {
         "merged": "F:\\works\\ARhongbao\\ViewPagerIndicator\\build\\intermediates\\res\\merged\\release\\drawable-mdpi-v4\\vpi__tab_selected_pressed_holo.9.png",
         "source": "F:\\works\\ARhongbao\\ViewPagerIndicator\\res\\drawable-mdpi\\vpi__tab_selected_pressed_holo.9.png"
     },
@@ -16,8 +28,20 @@
         "source": "F:\\works\\ARhongbao\\ViewPagerIndicator\\res\\drawable-mdpi\\vpi__tab_selected_focused_holo.9.png"
     },
     {
+        "merged": "F:\\Project\\ARhongb\\ViewPagerIndicator\\build\\intermediates\\res\\merged\\release\\drawable-mdpi-v4\\vpi__tab_selected_pressed_holo.9.png",
+        "source": "F:\\Project\\ARhongb\\ViewPagerIndicator\\res\\drawable-mdpi\\vpi__tab_selected_pressed_holo.9.png"
+    },
+    {
         "merged": "F:\\works\\ARhongbao\\ViewPagerIndicator\\build\\intermediates\\res\\merged\\release\\drawable-mdpi-v4\\vpi__tab_unselected_focused_holo.9.png",
         "source": "F:\\works\\ARhongbao\\ViewPagerIndicator\\res\\drawable-mdpi\\vpi__tab_unselected_focused_holo.9.png"
+    },
+    {
+        "merged": "F:\\Project\\ARhongb\\ViewPagerIndicator\\build\\intermediates\\res\\merged\\release\\drawable-mdpi-v4\\vpi__tab_unselected_pressed_holo.9.png",
+        "source": "F:\\Project\\ARhongb\\ViewPagerIndicator\\res\\drawable-mdpi\\vpi__tab_unselected_pressed_holo.9.png"
+    },
+    {
+        "merged": "F:\\Project\\ARhongb\\ViewPagerIndicator\\build\\intermediates\\res\\merged\\release\\drawable-mdpi-v4\\vpi__tab_selected_holo.9.png",
+        "source": "F:\\Project\\ARhongb\\ViewPagerIndicator\\res\\drawable-mdpi\\vpi__tab_selected_holo.9.png"
     },
     {
         "merged": "F:\\works\\ARhongbao\\ViewPagerIndicator\\build\\intermediates\\res\\merged\\release\\drawable-mdpi-v4\\vpi__tab_unselected_holo.9.png",

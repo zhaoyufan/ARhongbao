@@ -5,29 +5,17 @@
     android:layout_height="match_parent"
 
     >
-    <include layout="@layout/common_title_bar"/>
+
     <LinearLayout
         android:id="@+id/email_login_form"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="15dp">
-
-        <ImageView
-            android:textColor="#000"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            android:layout_marginTop="20dp"
-            android:id="@+id/imageview"
-            android:layout_width="match_parent"
-            android:layout_height="160dp"
-            android:background="@mipmap/abc"
-            android:textColorHint="#000"
-            android:maxLines="1"
-            android:maxLength="11"
-            android:singleLine="true"
-            android:textSize="16sp" />
-
+<SurfaceView
+    android:id="@+id/canghb_surfview"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
 
 
     </LinearLayout>

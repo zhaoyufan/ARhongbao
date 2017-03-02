@@ -21,6 +21,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.kyt.arhongbao.R;
@@ -32,6 +33,7 @@ import java.io.IOException;
  */
 
 public class CanghbActivity extends AppCompatActivity implements SurfaceHolder.Callback,SensorEventListener, android.hardware.Camera.PictureCallback{
+    private TextView back,title;
     private Button btn_czz;
     private SurfaceView mSurfaceView;
     private android.hardware.Camera camera;
@@ -65,14 +67,14 @@ public class CanghbActivity extends AppCompatActivity implements SurfaceHolder.C
     };
 
 
-
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Window window=getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setContentView(R.layout.activity_canghb);
-
+        back = (TextView) findViewById(R.id.common_title_bar_left);
+        title = (TextView) findViewById(R.id.common_title);
+        title.setText("藏红包");
         mVibrator= (Vibrator) getSystemService(VIBRATOR_SERVICE);
 
         mCameraManager= (CameraManager) getSystemService(CAMERA_SERVICE);
@@ -95,6 +97,13 @@ public class CanghbActivity extends AppCompatActivity implements SurfaceHolder.C
             @Override
             public void onClick(View v) {
 
+            }
+        });
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+                finish();
             }
         });
 

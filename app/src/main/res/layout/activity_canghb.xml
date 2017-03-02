@@ -3,9 +3,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     >
-
+    <include layout="@layout/common_title_bar"/>
     <LinearLayout
         android:id="@+id/email_login_form"
         android:layout_width="match_parent"

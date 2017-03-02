@@ -14,7 +14,6 @@ import com.example.kyt.arhongbao.R;
  */
 
 public class SaohbActivity extends AppCompatActivity {
-    private ImageView imageView;
     private Button shb;
     private TextView back,title;
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,14 +22,9 @@ public class SaohbActivity extends AppCompatActivity {
         shb= (Button) findViewById(R.id.shb);
         back = (TextView) findViewById(R.id.common_title_bar_left);
         title = (TextView) findViewById(R.id.common_title);
+
         title.setText("扫红包");
-        shb.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                return false;
-            }
-        });
-        imageView= (ImageView) findViewById(R.id.imageview);
+
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

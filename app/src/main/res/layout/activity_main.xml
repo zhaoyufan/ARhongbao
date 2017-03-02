@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <include layout="@layout/common_title_bar"/>
+    <LinearLayout
+        android:id="@+id/email_login_form"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <Button
+            android:textColor="#000"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/biaoti_type"
+            android:id="@+id/sousuo"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="正在定位...."
+            android:textColorHint="#000"
+            android:maxLines="1"
+            android:maxLength="11"
+            android:singleLine="true"
+            android:textSize="16sp" />
+
+
+
+</LinearLayout>
+    <LinearLayout
+        android:id="@+id/email_login_form1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="15dp">
+        <Button
+            android:id="@+id/chb"
+            android:textColor="#000"
+            android:layout_marginLeft="80dp"
+            android:layout_marginRight="80dp"
+            android:layout_marginTop="20dp"
+            android:hint="藏红包"
+            android:textColorHint="#000"
+
+            android:maxLines="1"
+            android:maxLength="11"
+            android:singleLine="true"
+            android:textSize="16sp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_common"/>
+
+        <Button
+            android:id="@+id/zhb"
+            android:textColor="#000"
+            android:layout_marginLeft="80dp"
+            android:layout_marginRight="80dp"
+            android:layout_marginTop="20dp"
+            android:hint="找红包"
+            android:textColorHint="#000"
+            android:maxLines="1"
+            android:maxLength="11"
+            android:singleLine="true"
+            android:textSize="16sp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_common"/>
+        <Button
+            android:id="@+id/shb"
+            android:textColor="#000"
+            android:layout_marginLeft="80dp"
+            android:layout_marginRight="80dp"
+            android:layout_marginTop="20dp"
+            android:hint="扫红包"
+            android:textColorHint="#000"
+            android:maxLines="1"
+            android:maxLength="11"
+            android:singleLine="true"
+            android:textSize="16sp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_common"/>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="400dp">
+        <ProgressBar
+            android:id="@+id/progressbar"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+</LinearLayout>

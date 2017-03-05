@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,16 +20,15 @@ import com.baidu.mapapi.SDKInitializer;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.BitmapDescriptor;
 import com.baidu.mapapi.map.BitmapDescriptorFactory;
+import com.baidu.mapapi.map.InfoWindow;
 import com.baidu.mapapi.map.MapStatus;
 import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.Marker;
 import com.baidu.mapapi.map.MarkerOptions;
-import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.map.UiSettings;
 import com.baidu.mapapi.model.LatLng;
-import com.baidu.mapapi.model.inner.Point;
 import com.example.kyt.arhongbao.R;
 
 import java.util.ArrayList;
@@ -52,11 +53,26 @@ public class ZhaohbActivity extends AppCompatActivity {
     public MapStatusUpdateFactory msuFactory = null;
     double latitude, longitude;
     private MarkerOptions options;
-    private BitmapDescriptor bitmap,bitmap2;
+    private BitmapDescriptor bitmap, bitmap2;
     private Marker marker1;//自己标记
     private LatLng point;
     private LatLng point1;
     private List<LatLng> points = new ArrayList<LatLng>();
+    private LinearLayout hongbaoinfo_window;
+    private InfoWindow mInfowIndow;
+    private MarkerOnInfoWindowClickListener markerListener;
+    private TextView distence;
+    private View view;
+    private final class MarkerOnInfoWindowClickListener implements InfoWindow.OnInfoWindowClickListener {
+
+        @Override
+        public void onInfoWindowClick() {
+            //隐藏InfoWindow
+            mBaiduMap.hideInfoWindow();
+        }
+
+    }
+
     public BDLocationListener myListener = new BDLocationListener() {
 
         @Override
@@ -73,9 +89,10 @@ public class ZhaohbActivity extends AppCompatActivity {
 //            longitude = location.getLatitude();
             //29.917063   29.916063  29.918055
             //121.521415  121.520415 121.522315
-            point = new LatLng(29.916063,121.520415);
+            //29.892273   121.486969
+            point = new LatLng(29.891273, 121.485969);
             points.add(point);
-            point = new LatLng(29.918055,121.522315);
+            point = new LatLng(29.893273, 121.487969);
             points.add(point);
 
             Log.i("lat", "a" + location.getLatitude());
@@ -84,15 +101,16 @@ public class ZhaohbActivity extends AppCompatActivity {
             if (isFirstLoc) {
                 isFirstLoc = false;
                 point1 = new LatLng(location.getLatitude(), location.getLongitude());
+                Toast.makeText(ZhaohbActivity.this,point1.toString(),Toast.LENGTH_SHORT).show();
                 options = new MarkerOptions()
                         .position(point1)
                         .icon(bitmap)
                         .zIndex(9)
                         .title("我的位置");
                 marker1 = (Marker) mBaiduMap.addOverlay(options);
-                for(int i = 0;i<points.size(); i++){
+                for (int i = 0; i < points.size(); i++) {
                     double a = points.get(i).latitude;
-                    Log.i("aaaa",a+"a");
+                    Log.i("aaaa", a + "a");
                     options = new MarkerOptions()
                             .position(points.get(i))
                             .icon(bitmap2)
@@ -105,6 +123,7 @@ public class ZhaohbActivity extends AppCompatActivity {
             }
 
         }
+
         @Override
         public void onConnectHotSpotMessage(String s, int i) {
 
@@ -151,8 +170,9 @@ public class ZhaohbActivity extends AppCompatActivity {
         bitmap = BitmapDescriptorFactory.fromResource(R.drawable.userlocation);
         bitmap2 = BitmapDescriptorFactory.fromResource(R.drawable.packagelocation);
         title.setText("找红包");
+        view = LayoutInflater.from(getApplicationContext()).inflate(R.layout.hongbaoinfo_window, null);
+        distence = (TextView) view.findViewById(R.id.distence);
     }
-
 
     private void clickListener() {
         rw.setOnClickListener(new View.OnClickListener() {
@@ -169,17 +189,31 @@ public class ZhaohbActivity extends AppCompatActivity {
                 finish();
             }
         });
-        mBaiduMap.setOnMarkerClickListener(new BaiduMap.OnMarkerClickListener(){
+        mBaiduMap.setOnMarkerClickListener(new BaiduMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
-                if (marker == marker1){
-                    Toast.makeText(ZhaohbActivity.this,"marker1 倍点击了",Toast.LENGTH_SHORT).show();
+                LatLng ll = marker.getPosition();
+                Log.i("lanlat",ll.toString()+"a");
+                Log.i("lanlat",points.get(0)+"b"+points.size());
+                for (int i = 0; i < points.size(); i++) {
+                    if (ll == points.get(i)) {
+                        distence.setText("111");
+                        Toast.makeText(ZhaohbActivity.this, "marker+"+i+"被点击了", Toast.LENGTH_SHORT).show();
+
+                        mInfowIndow = new InfoWindow(view,ll,-47);
+                        view.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                mBaiduMap.hideInfoWindow();
+                            }
+                        });
+                        mBaiduMap.showInfoWindow(mInfowIndow);
+                    }
                 }
                 return false;
             }
         });
     }
-
     //百度地图UI设置
     private void uiSetting() {
         UiSettings uiSettings = mBaiduMap.getUiSettings();
@@ -191,7 +225,6 @@ public class ZhaohbActivity extends AppCompatActivity {
         uiSettings.setCompassEnabled(false);
 
     }
-
     /**
      * 设置定位参数
      */
@@ -200,10 +233,9 @@ public class ZhaohbActivity extends AppCompatActivity {
         option.setOpenGps(true); // 打开GPS
         option.setLocationMode(LocationClientOption.LocationMode.Hight_Accuracy);// 设置定位模式
         option.setCoorType("bd09ll"); // 返回的定位结果是百度经纬度,默认值gcj02
-        option.setScanSpan(5000); // 设置发起定位请求的间隔时间为5000ms
+        option.setScanSpan(1000); // 设置发起定位请求的间隔时间为1000ms
         option.setIsNeedAddress(true); // 返回的定位结果包含地址信息
         option.setNeedDeviceDirect(true); // 返回的定位结果包含手机机头的方向
         locationClient.setLocOption(option);
     }
-
 }

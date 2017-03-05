@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/common_title_bar"/>
+
+    <EditText
+        android:textColor="#fff"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="175dp"
+        android:background="@drawable/edittext_type"
+        android:id="@+id/register_account"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:hint="请输入用户名"
+        android:textColorHint="#fff"
+        android:maxLines="1"
+        android:maxLength="11"
+        android:singleLine="true"
+        android:textSize="16sp" />
+    <EditText
+        android:textColor="#fff"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="175dp"
+        android:background="@drawable/edittext_type"
+        android:id="@+id/resgiter_pass"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:hint="请输入密码"
+        android:textColorHint="#fff"
+        android:maxLines="1"
+        android:maxLength="11"
+        android:singleLine="true"
+        android:textSize="16sp" />
+
+    <CheckBox
+        android:id="@+id/register_check"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:checked="false"
+        android:text="是否为商户"/>
+
+
+    <Button
+        android:gravity="center"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:id="@+id/register_nextstep"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/button_type"
+        android:text="下一步"
+        android:textColor="#fff"
+        android:textSize="15sp" />
+
+
+
+</LinearLayout>

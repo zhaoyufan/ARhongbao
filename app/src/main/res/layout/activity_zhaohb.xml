@@ -1,80 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    >
-    <include layout="@layout/common_title_bar"/>
-    <LinearLayout
-        android:id="@+id/email_login_form"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="15dp">
+    <include layout="@layout/common_title_bar" />
 
-        <ImageView
-            android:textColor="#000"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/biaoti_type"
-            android:id="@+id/sousuo"
+
+
+        <com.baidu.mapapi.map.MapView
+            android:id="@+id/bmapView"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:hint="正在定位...."
-            android:textColorHint="#000"
-            android:maxLines="1"
-            android:maxLength="11"
-            android:singleLine="true"
-            android:textSize="16sp" />
+            android:layout_height="match_parent"
+            android:layout_weight="9"
+            android:clickable="true" />
 
 
 
-    </LinearLayout>
     <LinearLayout
         android:id="@+id/email_login_form1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:orientation="horizontal"
-        android:padding="15dp"
+
         android:weightSum="2">
 
 
         <Button
             android:id="@+id/cxdw"
-            android:textColor="#000"
-
-            android:layout_marginTop="20dp"
-            android:hint="重新定位"
-            android:textColorHint="#000"
-            android:maxLines="1"
-            android:maxLength="11"
-            android:singleLine="true"
-            android:textSize="16sp"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_weight="1"
-            android:background="@drawable/bg_common"/>
+            android:background="@drawable/bg_common"
+            android:hint="重新定位"
+            android:maxLength="11"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textColor="#000"
+            android:textColorHint="#000"
+            android:textSize="16sp" />
+
         <Button
             android:id="@+id/rw"
-            android:textColor="#000"
-
-            android:layout_marginTop="20dp"
-            android:hint="任务"
-            android:textColorHint="#000"
-            android:maxLines="1"
-            android:maxLength="11"
-            android:singleLine="true"
-            android:textSize="16sp"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
+            android:layout_weight="1"
             android:background="@drawable/bg_common"
-            android:layout_weight="1" />
-
-
+            android:hint="任务"
+            android:maxLength="11"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textColor="#000"
+            android:textColorHint="#000"
+            android:textSize="16sp" />
     </LinearLayout>
-    <LinearLayout
+    <!--<LinearLayout
         android:layout_width="match_parent"
         android:layout_height="400dp">
         <ProgressBar
@@ -84,5 +65,5 @@
             android:layout_gravity="center"
             android:visibility="gone"/>
 
-    </LinearLayout>
+    </LinearLayout>-->
 </LinearLayout>

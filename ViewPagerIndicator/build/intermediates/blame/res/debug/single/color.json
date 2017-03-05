@@ -8,6 +8,14 @@
         "source": "F:\\works\\ARhongbao\\ViewPagerIndicator\\res\\color\\vpi__dark_theme.xml"
     },
     {
+        "merged": "F:\\WorkSpace\\Ar\\ARhongbao\\ViewPagerIndicator\\build\\intermediates\\res\\merged\\debug\\color\\vpi__dark_theme.xml",
+        "source": "F:\\WorkSpace\\Ar\\ARhongbao\\ViewPagerIndicator\\res\\color\\vpi__dark_theme.xml"
+    },
+    {
+        "merged": "F:\\WorkSpace\\Ar\\ARhongbao\\ViewPagerIndicator\\build\\intermediates\\res\\merged\\debug\\color\\vpi__light_theme.xml",
+        "source": "F:\\WorkSpace\\Ar\\ARhongbao\\ViewPagerIndicator\\res\\color\\vpi__light_theme.xml"
+    },
+    {
         "merged": "F:\\Project\\ARhongb\\ViewPagerIndicator\\build\\intermediates\\res\\merged\\debug\\color\\vpi__light_theme.xml",
         "source": "F:\\Project\\ARhongb\\ViewPagerIndicator\\res\\color\\vpi__light_theme.xml"
     },

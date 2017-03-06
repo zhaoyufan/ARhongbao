@@ -63,6 +63,7 @@ public class ZhaohbActivity extends AppCompatActivity {
     private MarkerOnInfoWindowClickListener markerListener;
     private TextView distence;
     private View view;
+
     private final class MarkerOnInfoWindowClickListener implements InfoWindow.OnInfoWindowClickListener {
 
         @Override
@@ -101,7 +102,7 @@ public class ZhaohbActivity extends AppCompatActivity {
             if (isFirstLoc) {
                 isFirstLoc = false;
                 point1 = new LatLng(location.getLatitude(), location.getLongitude());
-                Toast.makeText(ZhaohbActivity.this,point1.toString(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(ZhaohbActivity.this, point1.toString(), Toast.LENGTH_SHORT).show();
                 options = new MarkerOptions()
                         .position(point1)
                         .icon(bitmap)
@@ -121,7 +122,6 @@ public class ZhaohbActivity extends AppCompatActivity {
                 MapStatusUpdate u = MapStatusUpdateFactory.newLatLngZoom(point1, 19);    //设置地图中心点以及缩放级别
                 mBaiduMap.animateMapStatus(u);
             }
-
         }
 
         @Override
@@ -193,14 +193,14 @@ public class ZhaohbActivity extends AppCompatActivity {
             @Override
             public boolean onMarkerClick(Marker marker) {
                 LatLng ll = marker.getPosition();
-                Log.i("lanlat",ll.toString()+"a");
-                Log.i("lanlat",points.get(0)+"b"+points.size());
+                Log.i("lanlat", ll.toString() + "a");
+                Log.i("lanlat", points.get(0) + "b" + points.size());
                 for (int i = 0; i < points.size(); i++) {
                     if (ll == points.get(i)) {
                         distence.setText("111");
-                        Toast.makeText(ZhaohbActivity.this, "marker+"+i+"被点击了", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ZhaohbActivity.this, "marker+" + i + "被点击了", Toast.LENGTH_SHORT).show();
 
-                        mInfowIndow = new InfoWindow(view,ll,-47);
+                        mInfowIndow = new InfoWindow(view, ll, -47);
                         view.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
@@ -214,6 +214,7 @@ public class ZhaohbActivity extends AppCompatActivity {
             }
         });
     }
+
     //百度地图UI设置
     private void uiSetting() {
         UiSettings uiSettings = mBaiduMap.getUiSettings();
@@ -225,6 +226,7 @@ public class ZhaohbActivity extends AppCompatActivity {
         uiSettings.setCompassEnabled(false);
 
     }
+
     /**
      * 设置定位参数
      */

@@ -11,10 +11,12 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.kyt.arhongbao.R;
-import com.example.kyt.arhongbao.yindao.TestFragment;
-import com.viewpagerindicator.TabPageIndicator;
+import com.example.kyt.arhongbao.TestFragment;
+
 
 import java.util.ArrayList;
+
+import me.relex.circleindicator.CircleIndicator;
 
 /**
  * Created by kyt on 2017/2/22.
@@ -83,7 +85,7 @@ public class RenwuActivity extends AppCompatActivity {
             ViewPager pager = (ViewPager) findViewById(R.id.viewpager);
             pager.setAdapter(adapter);
 
-            TabPageIndicator indicator = (TabPageIndicator) findViewById(R.id.indicator);
+            CircleIndicator indicator = (CircleIndicator) findViewById(R.id.indicator);
             indicator.setViewPager(pager);
         }
 

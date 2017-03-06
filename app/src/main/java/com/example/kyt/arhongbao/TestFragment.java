@@ -1,4 +1,4 @@
-package com.example.kyt.arhongbao.yindao;
+package com.example.kyt.arhongbao;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

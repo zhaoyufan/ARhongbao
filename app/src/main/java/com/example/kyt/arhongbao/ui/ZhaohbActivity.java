@@ -2,6 +2,7 @@ package com.example.kyt.arhongbao.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -25,12 +26,14 @@ import com.baidu.mapapi.map.MapStatus;
 import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
+import com.baidu.mapapi.map.MapViewLayoutParams;
 import com.baidu.mapapi.map.Marker;
 import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.map.UiSettings;
 import com.baidu.mapapi.model.LatLng;
 import com.example.kyt.arhongbao.R;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,6 +45,7 @@ public class ZhaohbActivity extends AppCompatActivity {
     private ImageView sousuo;
     private Button cxdw, rw;
     private TextView back, title;
+
 
     //以下是地图用到的
     private MapView mapView;
@@ -134,7 +138,7 @@ public class ZhaohbActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         SDKInitializer.initialize(getApplicationContext());
         MapView.setMapCustomEnable(true);
-        MapView.setCustomMapStylePath("/sdcard/mystyle");
+        MapView.setCustomMapStylePath(Environment.getExternalStorageDirectory().getPath()+"/img/mystyle");
         setContentView(R.layout.activity_zhaohb);
         init();
         mapSetting();

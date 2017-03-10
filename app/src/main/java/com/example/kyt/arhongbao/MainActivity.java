@@ -10,19 +10,23 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.kyt.arhongbao.application.App;
+import com.example.kyt.arhongbao.model.User;
+import com.example.kyt.arhongbao.model.view.LoginListenter;
+import com.example.kyt.arhongbao.persenter.UserPersenter;
 import com.example.kyt.arhongbao.ui.ZhuymActivity;
-import com.google.gson.JsonObject;
-import com.squareup.okhttp.Request;
+import com.example.kyt.arhongbao.util.MyProgressDialog;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements LoginListenter {
     private Button login;
     private TextView register,forgetpass;
     private EditText account,password;
     private Map<String,String> map;
-
+    UserPersenter persenter;
+    MyProgressDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,30 +36,28 @@ public class MainActivity extends AppCompatActivity {
         setListener();
     }
 
-
-
     private void setListener() {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String str_account=account.getText().toString();
                 String str_password=password.getText().toString();
+
                 map=new HashMap<String, String>();
-                map.put("phone",str_account);
+                map.put("userName",str_account);
                 map.put("password",str_password);
-//                OkHttpClientManager.postAsyn("http://maneng.uicp.io/api/users/", new OkHttpClientManager.ResultCallback() {
-//                    @Override
-//                    public void onError(Request request, Exception e) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onResponse(Object response) {
-//
-//                    }
-//                },map);
-                Intent intent=new Intent(MainActivity.this, ZhuymActivity.class);
-                startActivity(intent);
+                if("".equals(str_account)){
+                    Toast.makeText(MainActivity.this,"用户名不能为空!",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if("".equals(str_password)){
+                    Toast.makeText(MainActivity.this,"密码不能为空!",Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                dialog.show();
+
+                persenter.login(map,MainActivity.this);
+
             }
         });
 
@@ -77,8 +79,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
     }
 
     private void initView() {
@@ -87,5 +87,28 @@ public class MainActivity extends AppCompatActivity {
         forgetpass= (TextView) findViewById(R.id.forgetpass);
         account= (EditText) findViewById(R.id.account);
         password= (EditText) findViewById(R.id.password);
+        persenter = new UserPersenter();
+        dialog = new MyProgressDialog(this);
+    }
+
+    @Override
+    public void success(User user) {
+        if(user.getUserName() == null){
+            Toast.makeText(this,"用户名/密码错误！",Toast.LENGTH_SHORT).show();
+            dialog.dismiss();
+            return;
+        }
+        App.APP_USER = user;
+        Log.i("aaa","name="+user.getUserName());
+        dialog.dismiss();
+        Intent intent=new Intent(MainActivity.this, ZhuymActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
+    public void fail(String message) {
+        dialog.dismiss();
+        Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
     }
 }

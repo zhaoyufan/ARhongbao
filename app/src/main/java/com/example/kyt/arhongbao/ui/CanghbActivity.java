@@ -3,13 +3,13 @@ package com.example.kyt.arhongbao.ui;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.PixelFormat;
-import android.hardware.Camera;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.hardware.camera2.CameraManager;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Vibrator;
@@ -25,8 +25,22 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.kyt.arhongbao.R;
+import com.example.kyt.arhongbao.api.ApiUtil;
+import com.example.kyt.arhongbao.api.RxSubscribe;
+import com.example.kyt.arhongbao.model.User;
+import com.squareup.okhttp.MediaType;
+import com.squareup.okhttp.RequestBody;
 
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by kyt on 2017/2/22.
@@ -48,6 +62,7 @@ public class CanghbActivity extends AppCompatActivity implements SurfaceHolder.C
     private final int START_TAKEPIC=0x12;
 
     private Bitmap bitmap;
+    private static String BASE_PATH = Environment.getExternalStorageDirectory().getPath()+"/";
 
     Handler mHandler=new Handler(){
         @Override
@@ -96,7 +111,7 @@ public class CanghbActivity extends AppCompatActivity implements SurfaceHolder.C
         btn_czz.setOnClickListener(new View.OnClickListener() {//BTN藏在这
             @Override
             public void onClick(View v) {
-
+                upload();
             }
         });
         back.setOnClickListener(new View.OnClickListener() {
@@ -107,6 +122,52 @@ public class CanghbActivity extends AppCompatActivity implements SurfaceHolder.C
             }
         });
 
+    }
+    public void upload() {
+        Log.i("aaa", "上传！");
+        File file1 = null;
+        File file2 = null;
+        //String path2 = Environment.getExternalStorageDirectory()+"/img/bb.jpg";
+
+        file1 = new File(BASE_PATH+"abc.jpg");
+        file2 = new File(BASE_PATH+"img/aa.jpg");
+        final RequestBody requestBody =
+                RequestBody.create(MediaType.parse("multipart/form-data"), file1);
+        final RequestBody requestBody2 =
+                RequestBody.create(MediaType.parse("multipart/form-data"), file2);
+        Map<String,RequestBody> maps = new HashMap<String,RequestBody>();
+        maps.put("uploadingFiles\"; filename=\"abc.jpg", requestBody);
+        maps.put("uploadingFiles\"; filename=\"aa.jpg", requestBody2);
+        ApiUtil.createApiService().upload(maps)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new RxSubscribe<User>() {
+                    @Override
+                    protected void _onNext(User user) {
+                        Log.i("aaa","成功！");
+                    }
+
+                    @Override
+                    protected void _onError(String message) {
+                        Log.i("aaa",message.toString());
+                    }
+                });
+
+//        Log.d("aaa", "上！！！");
+//        ApiUtil.createApiService().uploadfile(requestBody)
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new RxSubscribe<User>() {
+//                    @Override
+//                    protected void _onNext(User user) {
+//                        Log.i("aaa","成功！");
+//                    }
+//
+//                    @Override
+//                    protected void _onError(String message) {
+//                        Log.i("aaa",message.toString());
+//                    }
+//                });
     }
 
     @Override
@@ -198,12 +259,35 @@ public class CanghbActivity extends AppCompatActivity implements SurfaceHolder.C
     public void onPictureTaken(byte[] data, android.hardware.Camera camera) {
         if (data != null) {
             try {
-                bitmap= BitmapFactory.decodeByteArray(data,0,data.length);
+                bitmap = BitmapFactory.decodeByteArray(data,0,data.length);
+                saveBitmap();
             } catch (Exception e) {
                 Toast.makeText(this, "保存成功", Toast.LENGTH_LONG).show();
             }
         } else {
             Toast.makeText(this, "数据出错啦..", Toast.LENGTH_SHORT).show();
         }
+    }
+    /** 保存方法 */
+    public void saveBitmap() {
+        Log.e("aaa", "保存图片");
+        File f = new File(BASE_PATH, "abc.jpg");
+        if (f.exists()) {
+            f.delete();
+        }
+        try {
+            FileOutputStream out = new FileOutputStream(f);
+            bitmap.compress(Bitmap.CompressFormat.PNG, 90, out);
+            out.flush();
+            out.close();
+            Log.i("aa", "已经保存");
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
     }
 }

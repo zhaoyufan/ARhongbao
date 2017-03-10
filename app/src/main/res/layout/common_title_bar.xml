@@ -23,6 +23,19 @@
             android:layout_height="match_parent"
             android:textSize="28sp"
             android:textColor="#ffffff"
-            android:text="找红包"/>
+            />
+        <TextView
+            android:id="@+id/setting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:drawableRight="@drawable/common_back_arrow_selector"
+            android:gravity="right"
+            android:padding="8dp"
+            android:textSize="16sp"
+            android:visibility="gone"
+            />
+
     </RelativeLayout>
+
 </LinearLayout>

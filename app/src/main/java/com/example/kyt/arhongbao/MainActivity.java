@@ -57,7 +57,6 @@ public class MainActivity extends AppCompatActivity implements LoginListenter {
                 dialog.show();
 
                 persenter.login(map,MainActivity.this);
-
             }
         });
 

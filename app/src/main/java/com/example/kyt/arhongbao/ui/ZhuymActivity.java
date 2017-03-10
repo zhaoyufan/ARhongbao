@@ -23,7 +23,7 @@ import org.w3c.dom.Text;
 
 public class ZhuymActivity extends AppCompatActivity {
     private Button chb,shb,zhb,dingwei;
-    private TextView back,title;
+    private TextView back,title,setting;
     private LocationClient mLocationClient;//定位的核心类
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +35,7 @@ public class ZhuymActivity extends AppCompatActivity {
         BaiDuHelp.setLocationOption(mLocationClient);
 
         dingwei = (Button) findViewById(R.id.dingwei);
+        setting = (TextView) findViewById(R.id.setting);
         chb= (Button) findViewById(R.id.chb);
         shb= (Button) findViewById(R.id.shb);
         zhb= (Button) findViewById(R.id.zhb);
@@ -44,6 +45,13 @@ public class ZhuymActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 mLocationClient.start();
+            }
+        });
+        setting.setVisibility(View.VISIBLE);
+        setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(ZhuymActivity.this,"设置",Toast.LENGTH_SHORT).show();
             }
         });
         chb.setOnClickListener(new View.OnClickListener() {

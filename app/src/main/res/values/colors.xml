@@ -6,4 +6,6 @@
     <color name="action_bar">#499BF7</color>
 
     <color name="bocop_dialog_bg">#30000000</color>
+    <color name="text_normal">#ffffff</color>
+    <color name="text_pressed">#4f4f4f</color>
 </resources>
